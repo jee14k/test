@@ -5,3 +5,12 @@ services:
 script:
   - docker build -t mannydesigns/node .
   - docker images mannydesigns/node
+
+before_deploy:
+  - docker login -u jee14k -p jeevan#1409
+
+deploy:
+  provider: script
+  script: docker push mannydesigns/node
+  on:
+    branch: master
